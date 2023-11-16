@@ -31,6 +31,12 @@
 *.out
 *.app
 
+#################################################################################################
+
+./Lab*/Report/
+
+#################################################################################################
+
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,c++,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,c++,visualstudiocode
 
