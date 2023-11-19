@@ -4,6 +4,7 @@
 
 template <typename Tx, typename Tk>
 struct Function {
+	Function();
 	inline auto equation(Tx x, Tk k) -> decltype(x - k * std::cos(x));
 
 	/*	Alternative
@@ -14,6 +15,6 @@ struct Function {
 	}
 	*/
 
-	Function() = default;
+	//void print_equation()
 
 };

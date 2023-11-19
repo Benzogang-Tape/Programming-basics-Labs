@@ -18,3 +18,6 @@ template<typename Tx, typename Tk>
 inline auto Function<Tx, Tk>::equation(Tx x, Tk k) -> decltype(x - k * std::cos(x)){
 	return x - k * std::cos(x);
 }
+
+template<typename Tx, typename Tk>
+Function<Tx, Tk>::Function() = default;
