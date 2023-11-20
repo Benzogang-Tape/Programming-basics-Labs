@@ -2,6 +2,8 @@
 #include <iostream>
 
 struct Methods {
-	auto simple_iterations(double (*)(double), double, double);
-
-};	
+	double eps, approximation;
+	unsigned iteration_count{};
+	double simple_iterations(double (*)(double));
+	Methods(double, double);
+};

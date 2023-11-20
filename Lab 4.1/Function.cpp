@@ -3,26 +3,28 @@
 
 
 
-inline auto Function::equation(double x) -> decltype(x - this->k * std::cos(x)) {
+inline double Function::equation(double x) {
 	return x - (this->k) * std::cos(x);
 }
 
-inline auto Function::new_function(double x) -> decltype(this -> k* std::cos(x)) {
+inline double Function::new_function(double x) {
 	return this->k * std::cos(x);
 }
 
-inline auto Function::derivative(double x) -> decltype(this -> k* std::sin(x) + 1) {
+inline double Function::derivative(double x) {
 	return this->k * std::sin(x) + 1;
 }
 
 void Function::print_equation() {
 	if (static_cast<int>(this->k) == 1)
-		std::cout << "Equation: x - cos(x) = 0\n" << std::endl;
+		std::cout << "Equation: x - cos(x) = 0" << std::endl;
 	else
-		std::printf("Equation: x - %.1f * cos(x) = 0\n", this->k);	
+		std::printf("Equation: x - %.1f * cos(x) = 0", this->k);	
 }
 
-Function::Function(double k) {
+Function::Function() { this->k = 1.0; }
+
+Function::Function(double k=1) {
 	this->k = k;
 }
 
