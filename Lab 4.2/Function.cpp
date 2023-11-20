@@ -1,4 +1,4 @@
-#include "Solution.h"
+#include "Function.h"
 
 void print_equation(double k) {
 	if (static_cast<int>(k) == 1)
@@ -7,10 +7,14 @@ void print_equation(double k) {
 		std::printf("Equation: x - %.1f * cos(x) = 0", k);
 }
 
-inline double transformed_function(double x, double k) {
+double equation(double x, double k) {
+	return x - (k * std::cos(x));
+}
+
+double transformed_function(double x, double k) {
 	return k * std::cos(x);
 }
 
-inline double derivative(double x, double k) {
+double derivative(double x, double k) {
 	return k * std::sin(x) + 1;
 }

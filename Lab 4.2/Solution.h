@@ -5,6 +5,11 @@
 #include "Methods.h"
 #include "Function.h"
 
+
+void solution(double k, double eps, double approximation);
+inline double(*methods[constants::METHODS_COUNT])(double, double(*)(double, double), double, double) = { simple_iterations, half_division, half_division };
+
+
 /*
 void Solution::solve2(Function F, Methods M) {
 	F.print_equation();

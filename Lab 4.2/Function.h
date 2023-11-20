@@ -2,5 +2,7 @@
 #include <iostream>
 
 void print_equation(double);
-inline double transformed_function(double, double);
-inline double derivative(double, double);
+double transformed_function(double, double);
+double derivative(double, double);
+double equation(double, double);
+//inline double(*functions[2])(double, double) = { derivative, transformed_function };
