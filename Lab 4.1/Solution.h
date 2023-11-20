@@ -7,4 +7,5 @@
 
 struct Solution {
 	auto solve(double(*)(double(*)(double), double, double));
+	auto solve2(Function, Methods);
 };
