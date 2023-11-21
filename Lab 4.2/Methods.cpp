@@ -1,5 +1,8 @@
 #include "Methods.h"
 
+unsigned iterations = 0;
+unsigned *iterations_count = &iterations;
+
 double simple_iterations(double k, double(*g)(double, double), double eps, double approximation) {
 	double next_x = approximation, prev_x = next_x;
 	*iterations_count = 0;
@@ -18,6 +21,6 @@ double half_division(double k, double(*g)(double, double), double eps, double ap
 		half = static_cast<double>((b + a) / 2);
 		(*g)(half, k) * (*g)(a, k) < 0 ? b = half : a = half;
 		++(*iterations_count);
-	} while ((*g)(half, k) > eps);
+	} while (std::abs((*g)(half, k)) > eps);
 	return half;
 }
