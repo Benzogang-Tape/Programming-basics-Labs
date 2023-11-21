@@ -5,3 +5,4 @@ extern unsigned iterations;
 extern unsigned *iterations_count;
 double simple_iterations(double, double (*)(double, double), double, double);
 double half_division(double, double(*)(double, double), double, double);
+double newton_method(double, double(*)(double, double), double(*)(double, double), double, double);
