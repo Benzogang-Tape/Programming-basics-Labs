@@ -4,7 +4,7 @@
 unsigned iterations = 0;
 unsigned *iterations_count = &iterations;
 
-double simple_iterations(double k, double(*g)(double, double), double eps, double approximation) {
+double simple_iterations(double k, func_ref g, double eps, double approximation) {
 	double next_x = approximation, prev_x = next_x;
 	*iterations_count = 0;
 	do {
@@ -15,7 +15,7 @@ double simple_iterations(double k, double(*g)(double, double), double eps, doubl
 	return next_x;
 }
 
-double half_division(double k, double(*f)(double, double), double eps, double approximation) {
+double half_division(double k, func_ref f, double eps, double approximation) {
 	double a = approximation, b = a + a, half{};
 	*iterations_count = 0;
 	do {
@@ -26,7 +26,7 @@ double half_division(double k, double(*f)(double, double), double eps, double ap
 	return half;
 }
 
-double newton_method(double k, double(*f)(double, double), double(*derivative)(double, double), double eps, double approximation) {
+double newton_method(double k, func_ref f, func_ref derivative, double eps, double approximation) {
 	double next_x = approximation, prev_x = next_x;
 	*iterations_count = 0;
 	do {

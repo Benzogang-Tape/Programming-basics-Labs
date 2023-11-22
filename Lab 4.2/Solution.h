@@ -7,7 +7,7 @@
 
 
 void solution(double k, double eps, double approximation);
-inline double(*methods[constants::METHODS_COUNT - 1])(double, double(*)(double, double), double, double) = { simple_iterations, half_division };
+inline double(*methods[constants::METHODS_COUNT - 1])(double, func_ref, double, double) = { simple_iterations, half_division };
 inline double(*functions[constants::METHODS_COUNT])(double, double) = { transformed_function, equation, derivative };
 
 
