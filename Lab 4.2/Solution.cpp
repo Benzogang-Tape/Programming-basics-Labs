@@ -1,14 +1,25 @@
 #include "Solution.h"
 
+
 void solution(double k, double eps, double approximation) {
 	std::cout << print_equation(k) << std::format("Calculation error: {:.8g}", eps) << std::endl;
 	std::cout << std::format("{:<16}{:<16}{}", "Method ¹", "x", "N") << std::endl;
 	unsigned iter = 1;
 	for (const auto& meth : methods) {
-		std::cout << std::format("{:<16}{:<16.7f}{}", iter, meth(k, functions[iter - 1], eps, approximation), (*iterations_count)) << std::endl;
-		iter++;
+		if (eps == constants::EPS_1) {
+			std::cout << std::format("{:<16}{:<16.6f}{}", iter, meth(k, functions[iter - 1], eps, approximation), (*iterations_count)) << std::endl;
+			iter++;
+		}
+		else {
+			std::cout << std::format("{:<16}{:<16.8f}{}", iter, meth(k, functions[iter - 1], eps, approximation), (*iterations_count)) << std::endl;
+			iter++;
+		}
+		
 	}
-	std::cout << std::format("{:<16}{:<16.7f}{}", iter, newton_method(k, functions[1], functions[2], eps, approximation), (*iterations_count)) << std::endl << std::endl;
+	if (eps == constants::EPS_1)
+		std::cout << std::format("{:<16}{:<16.6f}{}", iter, newton_method(k, functions[1], functions[2], eps, approximation), (*iterations_count)) << std::endl << std::endl;
+	else
+		std::cout << std::format("{:<16}{:<16.8}{}", iter, newton_method(k, functions[1], functions[2], eps, approximation), (*iterations_count)) << std::endl << std::endl;
 }
 
 
