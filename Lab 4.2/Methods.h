@@ -2,7 +2,8 @@
 #include <iostream>
 #include <memory>
 
-typedef double (*func_ref)(double, double);
+//typedef double (*func_ref)(double, double);
+using func_ref = double (*)(double, double);
 extern std::unique_ptr<unsigned> iterations_count;
 /* Instead of the line above:
 extern unsigned iterations;
