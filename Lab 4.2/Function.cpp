@@ -2,7 +2,7 @@
 
 std::string print_equation(double k) {
 	if (static_cast<int>(k) == 1)
-		return std::format("Equation: x - cos(x) = 0");
+		return std::format("Equation: x - cos(x) = 0. ");
 	else
 		return std::format("Equation: x - {:.1f} * cos(x) = 0. ", k);
 }

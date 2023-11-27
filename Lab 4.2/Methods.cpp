@@ -1,8 +1,12 @@
 #include "Methods.h"
 #include "constants.h"
 
+
+std::unique_ptr<unsigned> iterations_count{ std::make_unique<unsigned>(0) };
+/* Instead of the line above:
 unsigned iterations = 0;
 unsigned *iterations_count = &iterations;
+*/
 
 double simple_iterations(double k, func_ref g, double eps, double approximation) {
 	double next_x = approximation, prev_x = next_x;
