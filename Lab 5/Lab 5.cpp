@@ -1,28 +1,19 @@
 #include <iostream>
 #include <memory>
-#include <random>
-#include "constants.h"
-#include <bitset>
+#include "sorting_functions.h"
+//#include <bitset>
 
+int array_5[constants::ARRAY_SIZE[0]]{}, array_50[constants::ARRAY_SIZE[1]]{}, array_500[constants::ARRAY_SIZE[2]]{};
 
 int main() {
 	using dynamic_array = std::unique_ptr<int[]>;
-	dynamic_array array_5 { std::make_unique<int[]>(constants::ARRAY_SIZE[0])};
-	//auto array_50{ std::make_unique<int[]>(constants::ARRAY_SIZE[1]) };
-	//auto array_500{ std::make_unique<int[]>(constants::ARRAY_SIZE[2]) };
+	dynamic_array arr_5 { std::make_unique<int[]>(constants::ARRAY_SIZE[0])};
+	auto arr_50{ std::make_unique<int[]>(constants::ARRAY_SIZE[1]) };
+	auto arr_500{ std::make_unique<int[]>(constants::ARRAY_SIZE[2]) };
 
-	std::random_device dev;
-	std::mt19937 rng(dev());
-	std::uniform_int_distribution<std::mt19937::result_type> rnd_int_32(constants::LOWER_LIMIT, constants::UPPER_LIMIT);
-	std::uniform_int_distribution<std::mt19937::result_type> rnd_bool(0, 1);
-
-	//srand(time(NULL));
-	constexpr int m = std::numeric_limits<int>::max();
-	for (unsigned i{}; i < constants::ARRAY_SIZE[0]; i++) {
-		//array_5[i] = rand();
-		rnd_bool(rng) ? array_5[i] = rnd_int_32(rng) : array_5[i] = -int(rnd_int_32(rng));
-	}
-
+	fill_array(arr_5.get(), constants::ARRAY_SIZE[0], 14, 88);
+	fill_array(arr_50.get(), constants::ARRAY_SIZE[1]);
+	fill_array(arr_500.get(), constants::ARRAY_SIZE[2]);
 }
 
 
