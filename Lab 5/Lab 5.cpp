@@ -1,19 +1,34 @@
 #include <iostream>
 #include <memory>
 #include "sorting_functions.h"
+#include "print_result.h"
 //#include <bitset>
 
 int array_5[constants::ARRAY_SIZE[0]]{}, array_50[constants::ARRAY_SIZE[1]]{}, array_500[constants::ARRAY_SIZE[2]]{};
 
 int main() {
+	setlocale(LC_ALL, "Russian");
+
 	using dynamic_array = std::unique_ptr<int[]>;
 	dynamic_array arr_5 { std::make_unique<int[]>(constants::ARRAY_SIZE[0])};
 	auto arr_50{ std::make_unique<int[]>(constants::ARRAY_SIZE[1]) };
 	auto arr_500{ std::make_unique<int[]>(constants::ARRAY_SIZE[2]) };
 
-	fill_array(arr_5.get(), constants::ARRAY_SIZE[0], 14, 88);
-	fill_array(arr_50.get(), constants::ARRAY_SIZE[1]);
+	fill_array(arr_5.get(), constants::ARRAY_SIZE[0], 14, 88, true);
+	/*fill_array(arr_50.get(), constants::ARRAY_SIZE[1]);
 	fill_array(arr_500.get(), constants::ARRAY_SIZE[2]);
+	copy_array(arr_5.get(), array_5, constants::ARRAY_SIZE[0]);
+	copy_array(arr_50.get(), array_50, constants::ARRAY_SIZE[1]);
+	copy_array(arr_500.get(), array_500, constants::ARRAY_SIZE[2]);*/
+
+	//copy_array<int>(arr_5.get(), array_5, size_t(constants::ARRAY_SIZE[0]));
+	//copy_array_1<int, 5>(arr_5.get(), array_5);
+
+
+	/*bubblesort(arr_5.get(), constants::ARRAY_SIZE[0], true);
+	selection_sort(arr_5.get(), constants::ARRAY_SIZE[0], true);*/
+
+	print_result(arr_5.get(), array_5, constants::ARRAY_SIZE[0], true);
 }
 
 

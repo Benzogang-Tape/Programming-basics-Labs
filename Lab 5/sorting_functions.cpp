@@ -18,3 +18,77 @@ void fill_array(int* array, unsigned array_size, int lower_limit, int upper_limi
 		(!rnd_bool(rng)) ? array[i] = rnd_int_32(rng) : array[i] = -int(rnd_int_32(rng));
 	}
 }
+
+
+void bubblesort(int arr[], unsigned arr_size, bool reverse) {
+	if (reverse) {
+		for (unsigned i{}; i < arr_size - 1; i++) {
+			for (unsigned j{}; j < arr_size - i - 1; j++) {
+				if (arr[j + 1] > arr[j])
+					std::swap(arr[j], arr[j + 1]);
+			}
+		}
+	}
+	else {
+		for (unsigned i{}; i < arr_size - 1; i++) {
+			for (unsigned j{}; j < arr_size - i - 1; j++) {
+				if (arr[j + 1] < arr[j])
+					std::swap(arr[j], arr[j + 1]);
+			}
+		}
+	}
+}
+
+
+void selection_sort(int arr[], unsigned arr_size, bool reverse) {
+	unsigned index{};
+	if (reverse) {
+		for (unsigned i{}; i < arr_size - 1; i++) {
+			int max{ arr[i] };
+			for (unsigned j = i; j < arr_size; j++) {
+				if (arr[j] >= max) {
+					max = arr[j];
+					index = j;
+				}
+			}
+			if (i != index)
+				std::swap(arr[i], arr[index]);
+		}
+	}
+	else {
+		for (unsigned i{}; i < arr_size - 1; i++) {
+			int min{ arr[i] };
+			for (unsigned j = i; j < arr_size; j++) {
+				if (arr[j] <= min) {
+					min = arr[j];
+					index = j;
+				}
+			}
+			if (i != index)
+				std::swap(arr[i], arr[index]);
+		}
+	}	
+}
+
+
+void copy_array(int arr_to_be_copied[], int arr_where_to_copy[], unsigned arr_size) {
+	for (unsigned i{}; i < arr_size; i++)
+		arr_where_to_copy[i] = arr_to_be_copied[i];
+}
+
+
+/*
+//
+//template<typename T, size_t static_arr_size>
+//void copy_array_1(T arr[], T(&static_arr)[static_arr_size]) {
+//	for (unsigned i{}; i < static_arr_size; i++)
+//		static_arr[i] = arr[i];
+//}
+
+//
+//template<typename T>
+//void copy_array(T arr[], T *static_arr, size_t array_size) {
+//	for (unsigned i{}; i < array_size; i++)
+//		*(static_arr + i) = arr[i];
+//}
+*/
