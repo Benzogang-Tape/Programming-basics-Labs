@@ -14,22 +14,35 @@ int main() {
 	auto arr_500{ std::make_unique<int[]>(constants::ARRAY_SIZE[2]) };
 
 	fill_array(arr_5.get(), constants::ARRAY_SIZE[0], 0, 12, true);
-	/*fill_array(arr_50.get(), constants::ARRAY_SIZE[1]);
+	fill_array(arr_50.get(), constants::ARRAY_SIZE[1]);
 	fill_array(arr_500.get(), constants::ARRAY_SIZE[2]);
 	copy_array(arr_5.get(), array_5, constants::ARRAY_SIZE[0]);
 	copy_array(arr_50.get(), array_50, constants::ARRAY_SIZE[1]);
-	copy_array(arr_500.get(), array_500, constants::ARRAY_SIZE[2]);*/
+	copy_array(arr_500.get(), array_500, constants::ARRAY_SIZE[2]);
 
-	//copy_array<int>(arr_5.get(), array_5, size_t(constants::ARRAY_SIZE[0]));
+	print_result(arr_5.get(), array_5, constants::ARRAY_SIZE[0], false);
+	print_result(arr_5.get(), array_5, constants::ARRAY_SIZE[0], true);
+
+	print_result_bubble_sort(arr_5.get(), arr_50.get(), arr_500.get());
+
+	copy_array(array_5, arr_5.get(), constants::ARRAY_SIZE[0]);
+	copy_array(array_50, arr_50.get(), constants::ARRAY_SIZE[1]);
+	copy_array(array_500, arr_500.get(), constants::ARRAY_SIZE[2]);
+
+	print_result_selection_sort(arr_5.get(), arr_50.get(), arr_500.get());
+
+	arr_5.reset();
+	arr_50.reset();
+	arr_500.reset();
+}
+
+
+//copy_array<int>(arr_5.get(), array_5, size_t(constants::ARRAY_SIZE[0]));
 	//copy_array_1<int, 5>(arr_5.get(), array_5);
 
 
 	/*bubblesort(arr_5.get(), constants::ARRAY_SIZE[0], true);
 	selection_sort(arr_5.get(), constants::ARRAY_SIZE[0], true);*/
-
-	print_result(arr_5.get(), array_5, constants::ARRAY_SIZE[0], false);
-	print_result(arr_5.get(), array_5, constants::ARRAY_SIZE[0], true);
-}
 
 
 /*
