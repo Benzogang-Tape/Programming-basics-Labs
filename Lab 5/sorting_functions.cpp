@@ -1,6 +1,8 @@
 #include "sorting_functions.h"
 
 
+std::unique_ptr<unsigned> swaps{ std::make_unique<unsigned>(0) }, comparisons{ std::make_unique<unsigned>(0) };
+
 std::random_device dev;
 std::mt19937 rng(dev());
 std::uniform_int_distribution<std::mt19937::result_type> rnd_bool(0, 0);
@@ -21,19 +23,27 @@ void fill_array(int* array, unsigned array_size, int lower_limit, int upper_limi
 
 
 void bubblesort(int arr[], unsigned arr_size, bool reverse) {
+	*swaps = 0;
+	*comparisons = 0;
 	if (reverse) {
 		for (unsigned i{}; i < arr_size - 1; i++) {
 			for (unsigned j{}; j < arr_size - i - 1; j++) {
-				if (arr[j + 1] > arr[j])
+				if (arr[j + 1] > arr[j]) {
 					std::swap(arr[j], arr[j + 1]);
+					(*swaps)++;
+				}
+				(*comparisons)++;
 			}
 		}
 	}
 	else {
 		for (unsigned i{}; i < arr_size - 1; i++) {
 			for (unsigned j{}; j < arr_size - i - 1; j++) {
-				if (arr[j + 1] < arr[j])
+				if (arr[j + 1] < arr[j]) {
 					std::swap(arr[j], arr[j + 1]);
+					(*swaps)++;
+				}
+				(*comparisons)++;
 			}
 		}
 	}
@@ -41,6 +51,8 @@ void bubblesort(int arr[], unsigned arr_size, bool reverse) {
 
 
 void selection_sort(int arr[], unsigned arr_size, bool reverse) {
+	*swaps = 0;
+	*comparisons = 0;
 	unsigned index{};
 	if (reverse) {
 		for (unsigned i{}; i < arr_size - 1; i++) {
@@ -50,9 +62,12 @@ void selection_sort(int arr[], unsigned arr_size, bool reverse) {
 					max = arr[j];
 					index = j;
 				}
+				(*comparisons)++;
 			}
-			if (i != index)
+			if ((i != index) and (arr[i] != arr[index])) {
 				std::swap(arr[i], arr[index]);
+				(*swaps)++;
+			}
 		}
 	}
 	else {
@@ -63,9 +78,12 @@ void selection_sort(int arr[], unsigned arr_size, bool reverse) {
 					min = arr[j];
 					index = j;
 				}
+				(*comparisons)++;
 			}
-			if (i != index)
+			if ((i != index) and (arr[i] != arr[index])) {
 				std::swap(arr[i], arr[index]);
+				(*swaps)++;
+			}	
 		}
 	}	
 }

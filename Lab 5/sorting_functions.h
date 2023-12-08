@@ -6,6 +6,8 @@ void fill_array(int*, unsigned, int lower_limit = constants::LOWER_LIMIT, int up
 void bubblesort(int [], unsigned, bool reverse = false);
 void selection_sort(int[], unsigned, bool reverse = false);
 void copy_array(int[], int[], unsigned);
+extern std::unique_ptr<unsigned> swaps, comparisons;
+
 
 
 
