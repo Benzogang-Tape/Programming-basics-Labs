@@ -1,4 +1,3 @@
-#include <iostream>
 #include <memory>
 #include "print_result.h"
 //#include <bitset>

@@ -21,8 +21,7 @@ void fill_array(int* array, unsigned array_size, int lower_limit, int upper_limi
 	}
 }
 
-
-void bubblesort(int arr[], unsigned arr_size, bool reverse) {
+void bubble_sort(int arr[], unsigned arr_size, bool reverse) {
 	*swaps = 0;
 	*comparisons = 0;
 	if (reverse) {
