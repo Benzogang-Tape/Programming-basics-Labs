@@ -1,4 +1,4 @@
-#include <memory>
+
 #include "print_result.h"
 //#include <bitset>
 
@@ -12,7 +12,7 @@ int main() {
 	auto arr_50{ std::make_unique<int[]>(constants::ARRAY_SIZE[1]) };
 	auto arr_500{ std::make_unique<int[]>(constants::ARRAY_SIZE[2]) };
 
-	fill_array(arr_5.get(), constants::ARRAY_SIZE[0], 0, 12, true);
+	fill_array(arr_5.get(), constants::ARRAY_SIZE[0], 0, 100, true);
 	fill_array(arr_50.get(), constants::ARRAY_SIZE[1]);
 	fill_array(arr_500.get(), constants::ARRAY_SIZE[2]);
 	copy_array(arr_5.get(), array_5, constants::ARRAY_SIZE[0]);

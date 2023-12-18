@@ -20,30 +20,37 @@ void fill_array(int* array, unsigned array_size, int lower_limit, int upper_limi
 		(!rnd_bool(rng)) ? array[i] = rnd_int_32(rng) : array[i] = -int(rnd_int_32(rng));
 	}
 }
-
 void bubble_sort(int arr[], unsigned arr_size, bool reverse) {
 	*swaps = 0;
 	*comparisons = 0;
 	if (reverse) {
 		for (unsigned i{}; i < arr_size - 1; i++) {
+			unsigned current_swaps{};
 			for (unsigned j{}; j < arr_size - i - 1; j++) {
 				if (arr[j + 1] > arr[j]) {
 					std::swap(arr[j], arr[j + 1]);
 					(*swaps)++;
+					current_swaps++;
 				}
 				(*comparisons)++;
 			}
+			if (current_swaps == 0)
+				break;
 		}
 	}
 	else {
 		for (unsigned i{}; i < arr_size - 1; i++) {
+			unsigned current_swaps{};
 			for (unsigned j{}; j < arr_size - i - 1; j++) {
 				if (arr[j + 1] < arr[j]) {
 					std::swap(arr[j], arr[j + 1]);
 					(*swaps)++;
+					current_swaps++;
 				}
 				(*comparisons)++;
 			}
+			if (current_swaps == 0)
+				break;
 		}
 	}
 }
@@ -52,35 +59,32 @@ void bubble_sort(int arr[], unsigned arr_size, bool reverse) {
 void selection_sort(int arr[], unsigned arr_size, bool reverse) {
 	*swaps = 0;
 	*comparisons = 0;
-	unsigned index{};
 	if (reverse) {
 		for (unsigned i{}; i < arr_size - 1; i++) {
-			int max{ arr[i] };
-			for (unsigned j = i; j < arr_size; j++) {
-				if (arr[j] >= max) {
-					max = arr[j];
-					index = j;
+			unsigned max_index{ i };
+			for (unsigned j = i + 1; j < arr_size; j++) {
+				if (arr[j] >= arr[max_index]) {
+					max_index = j;
 				}
 				(*comparisons)++;
 			}
-			if ((i != index) and (arr[i] != arr[index])) {
-				std::swap(arr[i], arr[index]);
+			if ((i != max_index) and (arr[i] != arr[max_index])) {
+				std::swap(arr[i], arr[max_index]);
 				(*swaps)++;
 			}
 		}
 	}
 	else {
 		for (unsigned i{}; i < arr_size - 1; i++) {
-			int min{ arr[i] };
-			for (unsigned j = i; j < arr_size; j++) {
-				if (arr[j] <= min) {
-					min = arr[j];
-					index = j;
+			unsigned min_index{ i };
+			for (unsigned j = i + 1; j < arr_size; j++) {
+				if (arr[j] <= arr[min_index]) {
+					min_index = j;
 				}
 				(*comparisons)++;
 			}
-			if ((i != index) and (arr[i] != arr[index])) {
-				std::swap(arr[i], arr[index]);
+			if ((i != min_index) and (arr[i] != arr[min_index])) {
+				std::swap(arr[i], arr[min_index]);
 				(*swaps)++;
 			}	
 		}
