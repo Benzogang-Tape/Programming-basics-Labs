@@ -43,7 +43,7 @@ double IntTrap(func_ref_1 f, double a, double b, double eps, unsigned& n) {
     return new_sum;
 }
 
-void PrintTabl(I_print i_prn[], int k) {
+void PrintTabl(I_print i_prn[], int arr_size) {
     
     char* table_header[column_count]{ (char*)"Function", (char*)"Integral", (char*)"IntSum", (char*)"N " };
     unsigned size[column_count]{};
@@ -67,7 +67,7 @@ void PrintTabl(I_print i_prn[], int k) {
     std::cout << std::endl;
 
     // filling the table
-    for (unsigned i{}; i < k; i++) {
+    for (unsigned i{}; i < arr_size; i++) {
         std::cout << plus << std::fixed;
         for (unsigned j{}; j < column_count; j++) {
             std::cout << std::setfill(dash) << std::setw(column_width[j]) << plus;

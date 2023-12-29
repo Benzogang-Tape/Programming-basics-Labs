@@ -9,11 +9,11 @@ using func_ref_1 = double (*)(double);
 using func_ref_2 = double (*)(double, double);
 using func_ref_3 = double (*) (func_ref_1, double, double, double, unsigned&);
 
-struct I_print {				//данные для печати результатов интегрирования
-	const char* function_name;	//название функции
-	double integral_sum;		//значение интегральной суммы
-	double exact_value;			//точное значение интеграла
-	unsigned n;						//число разбиений области интегрирования при котором достигнута требуемая точность
+struct I_print {			
+	const char* function_name;
+	double integral_sum;	
+	double exact_value;		
+	unsigned n;				
 };
 
 double IntRect(func_ref_1, double, double, double, unsigned&);
