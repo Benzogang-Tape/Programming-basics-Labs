@@ -7,25 +7,24 @@
 
 using func_ref_1 = double (*)(double);
 using func_ref_2 = double (*)(double, double);
-using func_ref_3 = double (*) (func_ref_1, double, double, double, int&);
+using func_ref_3 = double (*) (func_ref_1, double, double, double, unsigned&);
 
-struct I_print {	//данные для печати результатов интегрирования
-	std::string function_name;//название функции
-	double integral_sum;	//значение интегральной суммы
-	double exact_value;	//точное значение интеграла
-	int n;	//число разбиений области интегрирования 
-	//при котором достигнута требуемая точность
+struct I_print {				//данные для печати результатов интегрирования
+	const char* function_name;	//название функции
+	double integral_sum;		//значение интегральной суммы
+	double exact_value;			//точное значение интеграла
+	unsigned n;						//число разбиений области интегрирования при котором достигнута требуемая точность
 };
 
-double IntRect(func_ref_1 f, double a, double b, double eps, int& n);
-double IntTrap(func_ref_1 f, double a, double b, double eps, int& n);
-void PrintTabl(I_print i_prn[], int k);
+double IntRect(func_ref_1, double, double, double, unsigned&);
+double IntTrap(func_ref_1, double, double, double, unsigned&);
+void PrintTabl(I_print [], int);
 
-double Sin_exact(double a, double b);
-double X_exact(double a, double b);
-double PowX_exact(double a, double b);
-double Arctan_exact(double a, double b);
-double MySin(double x);
-double MyX(double x);
-double MyPowX(double x);
-double MyArctan(double x);
+double Sin_exact(double, double);
+double X_exact(double, double);
+double PowX_exact(double, double);
+double Arctan_exact(double, double);
+double F_sin(double);
+double F_x(double);
+double F_pow_x(double);
+double F_arctan(double);
