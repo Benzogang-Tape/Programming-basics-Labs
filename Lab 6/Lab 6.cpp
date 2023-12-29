@@ -8,7 +8,7 @@ int main() {
 	unsigned n{ 1 };
 	const func_ref_1 functions[4]{ F_x, F_sin, F_pow_x, F_arctan };
 	const func_ref_2 functions_exact[4]{ X_exact, Sin_exact, PowX_exact, Arctan_exact };
-	const func_ref_3 Int—alculation[2]{ IntRect, IntTrap };
+	const func_ref_3 Int—alculationFuncs[2]	{ IntRect, IntTrap };
 	I_print i_pr[4] = { {} };
 
 	std::cout << "¬‚Â‰ËÚÂ ÌËÊÌ˛˛ „‡ÌËˆÛ ËÌÚÂ„ËÓ‚‡ÌËˇ: ";
@@ -28,7 +28,7 @@ int main() {
 			for (unsigned j{}; j < 4; j++)
 			{
 				n = 1;
-				i_pr[j].integral_sum = Int—alculation[k](functions[j], a, b, pow(10, eps[i]), n);
+				i_pr[j].integral_sum = Int—alculationFuncs[k](functions[j], a, b, pow(10, eps[i]), n);
 				i_pr[j].n = n;
 			}
 			PrintTabl(i_pr, functions_count);
