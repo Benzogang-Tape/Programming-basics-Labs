@@ -30,12 +30,10 @@ std::unique_ptr<std::unique_ptr<double[]>[]> create_matrix2(const unsigned N, co
 	return matrix;
 }
 
-void init_matrix(double** matrix, const unsigned N, const unsigned M) {
+void init_matrix(double matrix[constants::static_Matrix_Size][constants::static_Matrix_Size], const unsigned N) {
 	for (unsigned i{}; i < N; ++i) {
-		for (unsigned j{}; j < M; ++j) {
-			if (i < j) matrix[i][j] = (pow(constants::x, i) / static_cast<double>(pow(fact(j), i)));
-			else if (i > j) matrix[i][j] = (pow(-constants::x, i) / static_cast<double>(pow(fact(j), i)));
-			else matrix[i][j] = 1;
+		for (unsigned j{}; j < constants::static_Matrix_Size; ++j) {
+			matrix[i][j] = i * 10 + j;
 		}
 	}
 }
@@ -89,6 +87,33 @@ void print_matrix(const std::unique_ptr<std::unique_ptr<double[]>[]>* const matr
 		for (unsigned i{}; i < N; ++i) {
 			for (unsigned j{ columns_Printed }; j < current_Columns_Count; ++j) {
 				std::cout << std::setw(width) << matrix->get()[i][j];
+			}
+			std::cout << std::endl;
+		}
+		columns_Printed += column_Count;
+	}
+	std::cout << std::setfill('=') << std::setw(constants::max_Line_Length) << ' ' << std::setfill(' ') << std::endl;
+}
+
+void print_matrix(const double matrix[constants::static_Matrix_Size][constants::static_Matrix_Size], const unsigned N, const unsigned M, bool fixed, const unsigned precision) {
+	unsigned column_Count{ constants::max_Line_Length / (constants::integer_Part + precision) };
+	std::cout << std::fixed << std::setprecision(precision);
+	unsigned width{ constants::integer_Part + precision };
+	if (!fixed) {
+		std::cout << std::scientific;
+		column_Count = constants::max_Line_Length / (constants::integer_Part + precision + 5);
+		width += 5;
+	}
+	std::cout << std::setfill('=') << std::setw(constants::max_Line_Length) << ' ' << std::setfill(' ');
+	static unsigned columns_Printed{};
+	unsigned current_Columns_Count{};
+	while (columns_Printed < M) {
+		if (columns_Printed)
+			std::cout << std::setfill('-') << std::setw(constants::max_Line_Length) << ' ' << std::setfill(' ');
+		current_Columns_Count = [M, column_Count]() -> unsigned { if ((M - columns_Printed) / column_Count) return columns_Printed + column_Count; return columns_Printed + (M % column_Count); }();
+		for (unsigned i{}; i < N; ++i) {
+			for (unsigned j{ columns_Printed }; j < current_Columns_Count; ++j) {
+				std::cout << std::setw(width) << matrix[i][j];
 			}
 			std::cout << std::endl;
 		}
