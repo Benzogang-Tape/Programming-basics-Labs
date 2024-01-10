@@ -1,34 +1,31 @@
 #include "functions.h"
 
+
 std::function<unsigned(unsigned)> fact{ [](unsigned n) -> unsigned { if (n == 1 or n == 0) return 1; else return n * fact(n - 1); } };
 
-void create_matrix(double**& matrix, const unsigned N, const unsigned M) {
-	for (unsigned i{}; i < N; ++i) {
-		matrix[i] = new double[M];
-	}
-}
 
-double** create_matrix0(const unsigned N, const unsigned M) {
-	double** matrix = new double* [N];
-	for (unsigned i{}; i < N; ++i) {
-		matrix[i] = new double[M];
-	}
-	return matrix;
-}
-
-void create_matrix1(std::unique_ptr<std::unique_ptr<double[]>[]>* matrix, const unsigned N, const unsigned M) {
-	for (size_t i{}; i < N; ++i) {
-		matrix->get()[i] = std::make_unique<double[]>(M);
-	}
-}
-
-std::unique_ptr<std::unique_ptr<double[]>[]> create_matrix2(const unsigned N, const unsigned M) {
+std::unique_ptr<std::unique_ptr<double[]>[]> create_matrix(const unsigned N, const unsigned M) {
 	std::unique_ptr<std::unique_ptr<double[]>[]> matrix{ std::make_unique<std::unique_ptr<double[]>[]>(N) };
 	for (size_t i{}; i < N; ++i) {
 		matrix.get()[i] = std::make_unique<double[]>(M);
 	}
 	return matrix;
 }
+
+
+void delete_matrix(std::unique_ptr<std::unique_ptr<double[]>[]> matrix, const unsigned N, const unsigned M) {
+	for (unsigned i{}; i < N; ++i) {
+		matrix[i].reset();
+	}
+	matrix.reset();
+}
+
+
+void get_row_pointers(double matrix[][constants::static_Matrix_Size], double* row_pointers[constants::static_Matrix_Size]) {
+	for (unsigned i{}; i < constants::static_Matrix_Size; ++i)
+		row_pointers[i] = matrix[i];
+}
+
 
 void init_matrix(double matrix[constants::static_Matrix_Size][constants::static_Matrix_Size], const unsigned N) {
 	for (unsigned i{}; i < N; ++i) {
@@ -61,12 +58,6 @@ void init_matrix(std::unique_ptr<std::unique_ptr<double[]>[]>* matrix, const uns
 	}
 }
 
-void delete_matrix(std::unique_ptr<std::unique_ptr<double[]>[]> matrix, const unsigned N, const unsigned M) {
-	for (unsigned i{}; i < N; ++i) {
-		matrix[i].reset();
-	}
-	matrix.reset();
-}
 
 void print_matrix(const std::unique_ptr<std::unique_ptr<double[]>[]>* const matrix, const unsigned N, const unsigned M, bool fixed, const unsigned precision) {
 	unsigned column_Count{ constants::max_Line_Length / (constants::integer_Part + precision) };
@@ -77,6 +68,8 @@ void print_matrix(const std::unique_ptr<std::unique_ptr<double[]>[]>* const matr
 		column_Count = constants::max_Line_Length / (constants::integer_Part + precision + 5);
 		width += 5;
 	}
+	if (column_Count >= M)
+		column_Count = M;
 	std::cout << std::setfill('=') << std::setw(constants::max_Line_Length) << ' ' << std::setfill(' ');
 	static unsigned columns_Printed{};
 	unsigned current_Columns_Count{};
@@ -93,9 +86,11 @@ void print_matrix(const std::unique_ptr<std::unique_ptr<double[]>[]>* const matr
 		columns_Printed += column_Count;
 	}
 	std::cout << std::setfill('=') << std::setw(constants::max_Line_Length) << ' ' << std::setfill(' ') << std::endl;
+	columns_Printed = 0;
 }
 
-void print_matrix(const double matrix[constants::static_Matrix_Size][constants::static_Matrix_Size], const unsigned N, const unsigned M, bool fixed, const unsigned precision) {
+
+void print_matrix(const double* const matrix[], const unsigned N, const unsigned M, bool fixed, const unsigned precision) {
 	unsigned column_Count{ constants::max_Line_Length / (constants::integer_Part + precision) };
 	std::cout << std::fixed << std::setprecision(precision);
 	unsigned width{ constants::integer_Part + precision };
@@ -104,6 +99,8 @@ void print_matrix(const double matrix[constants::static_Matrix_Size][constants::
 		column_Count = constants::max_Line_Length / (constants::integer_Part + precision + 5);
 		width += 5;
 	}
+	if (column_Count >= M)
+		column_Count = M;
 	std::cout << std::setfill('=') << std::setw(constants::max_Line_Length) << ' ' << std::setfill(' ');
 	static unsigned columns_Printed{};
 	unsigned current_Columns_Count{};
@@ -120,7 +117,27 @@ void print_matrix(const double matrix[constants::static_Matrix_Size][constants::
 		columns_Printed += column_Count;
 	}
 	std::cout << std::setfill('=') << std::setw(constants::max_Line_Length) << ' ' << std::setfill(' ') << std::endl;
+	columns_Printed = 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
