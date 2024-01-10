@@ -56,7 +56,7 @@ void get_row_pointers(double matrix[][constants::static_Matrix_Size], double* ro
 }
 
 
-void print_matrix(double* matrix[], const unsigned N, const unsigned M, bool fixed, const unsigned precision) {
+void print_matrix(const double* const matrix[], const unsigned N, const unsigned M, bool fixed, const unsigned precision) {
 	unsigned column_Count{ constants::max_Line_Length / (constants::integer_Part + precision) };
 	std::cout << std::fixed << std::setprecision(precision);
 	unsigned width{ constants::integer_Part + precision };
