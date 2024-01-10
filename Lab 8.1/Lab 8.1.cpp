@@ -18,7 +18,7 @@ int main() {
 	delete_matrix(matrix, N, M);
 
 	double B[constants::static_Matrix_Size][constants::static_Matrix_Size]{ { } };
-	double* row_pointers [constants::static_Matrix_Size];
+	double* row_pointers[constants::static_Matrix_Size]{};
 	init_static_matrix(B, constants::static_Matrix_Size);
 	get_row_pointers(B, row_pointers);
 	print_matrix(row_pointers, constants::static_Matrix_Size, constants::static_Matrix_Size, true, 0);
