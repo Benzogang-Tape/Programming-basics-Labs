@@ -23,13 +23,14 @@ int main() {
 	get_row_pointers(B, row_pointers);
 	print_matrix(row_pointers, constants::static_Matrix_Size, constants::static_Matrix_Size, true, 0);
 
-	/*
-	std::cout << B << "  " << B[0] << "  " << B[2] << std::endl;
-	std::cout << B[0][0] << "  " << **B << "  " << *B[0] << std::endl;
-	std::cout << *(*(B + 1)) << "  " << *B[1] << std::endl;
-	std::cout << *(B[0] + 1) << "  " << *(*B + 1) << std::endl;
-	std::cout << B[0][20] << "  " << *(B[0] + 20) << "  " << *B[2] << std::endl;
-	*/
+
+	std::cout << B << std::endl;
+	system("Pause");
+	std::cout << B[4] << "  " << *B[2] << std::endl;
+	std::cout << &B[8] << "  " << *(*B+5) << "  " << *(B[0]+6) << std::endl;
+	std::cout << (*(*(B + 8))) << "  " << *(B[1]+6) << std::endl;
+	std::cout << &B[2] + 1 << "  " << B[7][3]++ << std::endl;
+	std::cout << B[1][20] << "  " << *(B[0] + 30) << std::endl;
 
 	return 0;
 }
