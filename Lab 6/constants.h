@@ -9,5 +9,5 @@ namespace constants {
     inline const unsigned column_count{ 4 };
     inline const unsigned column_width[column_count]{ 12, 18, 18, 10 };
     inline const char functions_init[functions_count][12] = { "y=x ", "y=sin(22x)", "y=x^4 ", "y=arctg(x)" };
-    inline const char method_name[2][31] = { "прямоугольников", "трапеций" };
+    inline const char method_name[2][31] = { "РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєРѕРІ", "С‚СЂР°РїРµС†РёР№" };
 }

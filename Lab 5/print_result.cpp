@@ -10,35 +10,35 @@ std::string display_arr(int arr[], unsigned arr_size) {
 
 void print_result(int arr[], int aux_arr[], unsigned arr_size, bool reverse) {
 	copy_array(arr, aux_arr, arr_size);
-	std::cout << std::format("Êîëè÷åñòâî ıëåìåíòîâ: {}. Çàäàííûé ìàññèâ:{}", arr_size, display_arr(arr, arr_size));
+	std::cout << std::format("ĞšĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑĞ»ĞµĞ¼ĞµĞ½Ñ‚Ğ¾Ğ²: {}. Ğ—Ğ°Ğ´Ğ°Ğ½Ğ½Ñ‹Ğ¹ Ğ¼Ğ°ÑÑĞ¸Ğ²:{}", arr_size, display_arr(arr, arr_size));
 	std::cout << '.';
 	if (reverse)
-		std::cout << " Ñîğòèğîâêà ïî óáûâàíèş" << std::endl;
+		std::cout << " Ğ¡Ğ¾Ñ€Ñ‚Ğ¸Ñ€Ğ¾Ğ²ĞºĞ° Ğ¿Ğ¾ ÑƒĞ±Ñ‹Ğ²Ğ°Ğ½Ğ¸Ñ" << std::endl;
 	else
-		std::cout << " Ñîğòèğîâêà ïî âîçğàñòàíèş" << std::endl;
-	std::cout << std::setw(16) << "Ìåòîä		       " << 
-				 std::setw(16) << "Ğåçóëüòàò           " << 
-				 std::setw(16) << "Ñğàâíåíèé       " <<
-				 std::setw(16) << "Ïåğåñòàíîâîê    " << std::endl;
+		std::cout << " Ğ¡Ğ¾Ñ€Ñ‚Ğ¸Ñ€Ğ¾Ğ²ĞºĞ° Ğ¿Ğ¾ Ğ²Ğ¾Ğ·Ñ€Ğ°ÑÑ‚Ğ°Ğ½Ğ¸Ñ" << std::endl;
+	std::cout << std::setw(16) << "ĞœĞµÑ‚Ğ¾Ğ´		       " << 
+				 std::setw(16) << "Ğ ĞµĞ·ÑƒĞ»ÑŒÑ‚Ğ°Ñ‚           " << 
+				 std::setw(16) << "Ğ¡Ñ€Ğ°Ğ²Ğ½ĞµĞ½Ğ¸Ğ¹       " <<
+				 std::setw(16) << "ĞŸĞµÑ€ĞµÑÑ‚Ğ°Ğ½Ğ¾Ğ²Ğ¾Ğº    " << std::endl;
 	copy_array(arr, aux_arr, arr_size);
 	selection_sort(arr, arr_size, reverse);
-	std::cout << std::setw(16) << "âûáîğ (n)       " <<
+	std::cout << std::setw(16) << "Ğ²Ñ‹Ğ±Ğ¾Ñ€ (n)       " <<
 				 std::setw(16) << display_arr(arr, arr_size) <<
 				 std::setw(16) << *comparisons <<
 				 std::setw(16) << *swaps << std::endl;
 	selection_sort(arr, arr_size, reverse);
-	std::cout << std::setw(16) << "âûáîğ (o)       " <<
+	std::cout << std::setw(16) << "Ğ²Ñ‹Ğ±Ğ¾Ñ€ (o)       " <<
 		std::setw(16) << display_arr(arr, arr_size) <<
 		std::setw(16) << *comparisons <<
 		std::setw(16) << *swaps << std::endl;
 	copy_array(aux_arr, arr, arr_size);
 	bubble_sort(arr, arr_size, reverse);
-	std::cout << std::setw(16) << "ïóçûğ¸ê (n)     " <<
+	std::cout << std::setw(16) << "Ğ¿ÑƒĞ·Ñ‹Ñ€Ñ‘Ğº (n)     " <<
 		std::setw(16) << display_arr(arr, arr_size) <<
 		std::setw(16) << *comparisons <<
 		std::setw(16) << *swaps << std::endl;
 	bubble_sort(arr, arr_size, reverse);
-	std::cout << std::setw(16) << "ïóçûğ¸ê (o)     " <<
+	std::cout << std::setw(16) << "Ğ¿ÑƒĞ·Ñ‹Ñ€Ñ‘Ğº (o)     " <<
 		std::setw(16) << display_arr(arr, arr_size) <<
 		std::setw(16) << *comparisons <<
 		std::setw(16) << *swaps << std::endl << std::endl;
@@ -46,8 +46,8 @@ void print_result(int arr[], int aux_arr[], unsigned arr_size, bool reverse) {
 }
 
 void print_result_bubble_sort(int arr_5[], int arr_50[], int arr_500[]) {
-	std::cout << "Ìåòîä: ïóçûğ¸ê (n). Ñîğòèğîâêà ïî âîçğàñòàíèş" << std::endl;
-	std::cout << std::format("{:<16}{:<16}{:<16}", "N", "Ñğàâíåíèé", "Ïåğåñòàíîâîê") << std::endl;
+	std::cout << "ĞœĞµÑ‚Ğ¾Ğ´: Ğ¿ÑƒĞ·Ñ‹Ñ€Ñ‘Ğº (n). Ğ¡Ğ¾Ñ€Ñ‚Ğ¸Ñ€Ğ¾Ğ²ĞºĞ° Ğ¿Ğ¾ Ğ²Ğ¾Ğ·Ñ€Ğ°ÑÑ‚Ğ°Ğ½Ğ¸Ñ" << std::endl;
+	std::cout << std::format("{:<16}{:<16}{:<16}", "N", "Ğ¡Ñ€Ğ°Ğ²Ğ½ĞµĞ½Ğ¸Ğ¹", "ĞŸĞµÑ€ĞµÑÑ‚Ğ°Ğ½Ğ¾Ğ²Ğ¾Ğº") << std::endl;
 	bubble_sort(arr_5, constants::ARRAY_SIZE[0], false);
 	std::cout << std::format("{:<16}{:<16}{:<16}", constants::ARRAY_SIZE[0], *comparisons, *swaps) << std::endl;
 	bubble_sort(arr_50, constants::ARRAY_SIZE[1], false);
@@ -57,8 +57,8 @@ void print_result_bubble_sort(int arr_5[], int arr_50[], int arr_500[]) {
 }
 
 void print_result_selection_sort(int arr_5[], int arr_50[], int arr_500[]) {
-	std::cout << "Ìåòîä: âûáîğ (n). Ñîğòèğîâêà ïî âîçğàñòàíèş" << std::endl;
-	std::cout << std::format("{:<16}{:<16}{:<16}", "N", "Ñğàâíåíèé", "Ïåğåñòàíîâîê") << std::endl;
+	std::cout << "ĞœĞµÑ‚Ğ¾Ğ´: Ğ²Ñ‹Ğ±Ğ¾Ñ€ (n). Ğ¡Ğ¾Ñ€Ñ‚Ğ¸Ñ€Ğ¾Ğ²ĞºĞ° Ğ¿Ğ¾ Ğ²Ğ¾Ğ·Ñ€Ğ°ÑÑ‚Ğ°Ğ½Ğ¸Ñ" << std::endl;
+	std::cout << std::format("{:<16}{:<16}{:<16}", "N", "Ğ¡Ñ€Ğ°Ğ²Ğ½ĞµĞ½Ğ¸Ğ¹", "ĞŸĞµÑ€ĞµÑÑ‚Ğ°Ğ½Ğ¾Ğ²Ğ¾Ğº") << std::endl;
 	selection_sort(arr_5, constants::ARRAY_SIZE[0], false);
 	std::cout << std::format("{:<16}{:<16}{:<16}", constants::ARRAY_SIZE[0], *comparisons, *swaps) << std::endl;
 	selection_sort(arr_50, constants::ARRAY_SIZE[1], false);
